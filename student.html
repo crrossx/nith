@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="loading-screen.css">
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.js"></script>
+
+    <div class="loading-box loading-fixed">
+        <div class="boxes" id="loading-screen">
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-wrap">
+        <div class="student-detail" id="student-info"></div>
+
+
+        <div class="graphs">
+            <div class="container">
+                <canvas class="line-graph" id="chart1"></canvas>
+            </div>
+            <div class="container">
+                <canvas class="line-graph" id="chart2"></canvas>
+            </div>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="student_detail.js"></script>
+
+</body>
+<footer>
+    <div class="heartIt">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/176026/heart292_(1).png" />
+    </div>
+    <a href="https://github.com/abhijeetgupto"> GitHub </a>
+    <span> | </span>
+    <a href="https://nith-results-api.deta.dev/docs"> API </a>
+    <span> | </span>
+    <a href="https://linkedin.com/in/abhijeetgupto"> LinkedIn </a>
+</footer>
+
+</html>
