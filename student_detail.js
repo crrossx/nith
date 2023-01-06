@@ -101,9 +101,10 @@ async function showData() {
     document.querySelector(".page-wrap").style.filter = "blur(5px)";
     document.getElementById("loading-screen").style.display = "block";
     const data = await getData(roll);
-    document.querySelector(".page-wrap").style.filter = "none";
     document.getElementById("loading-screen").style.display = "none";
-    document.body.style.filter = "none";
+    const loadingBox = document.querySelector(".loading-box");
+    loadingBox.parentNode.removeChild(loadingBox);
+    document.querySelector(".page-wrap").style.filter = "none";
 
     studentCard.innerHTML += `
         <div class="card-inner1">

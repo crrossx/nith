@@ -7,99 +7,83 @@
 
 <body>
 
-    <!-- <div class="boxes" id="loading-screen">
-        <div class="box">
+    <div class="loading-box loading-fixed">
+        <div class="spinner" id="loading-screen">
             <div></div>
             <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="box">
             <div></div>
             <div></div>
             <div></div>
             <div></div>
         </div>
-        <div class="box">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="box">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div> -->
-
-
-
-    <div class="container-wrap">
-        <section id="leaderboard">
-            <nav class="ladder-nav">
-                <div class="ladder-title">
-                    <h1 class="clickable">NIT-H Results</h1>
-                </div>
-                <div class="ladder-search">
-                    <input type="text" id="search-input" class="live-search-box"
-                        placeholder="Search for Name or Roll Number" />
-                </div>
-            </nav>
-            <table id="results-table" class="leaderboard-results" width="100%">
-                <thead>
-                    <tr>
-                        <th>College Rank</th>
-                        <th>Name</th>
-                        <th>Roll</th>
-                        <th>Class Rank</th>
-                        <th>Branch Rank</th>
-                        <th>
-                            <select id="semester-select" class="dropdown">
-                                <option value="all">Semester</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-
-                        </th>
-                        <th>
-                            <select id="department-select" class="dropdown">
-                                <option value="all">Branch</option>
-                                <option value="cse">CSE</option>
-                                <option value="csed">CSED</option>
-                                <option value="electrical">EE</option>
-                                <option value="ece">ECE</option>
-                                <option value="mechanical">ME</option>
-                                <option value="civil">CE</option>
-                                <option value="chemical">CH</option>
-                                <option value="ece">ECE</option>
-                                <option value="eced">ECED</option>
-                                <option value="material">MS</option>
-                            </select>
-                        </th>
-                        <th>CGPI</th>
-                    </tr>
-                </thead>
-                <tbody id="results-body"></tbody>
-            </table>
-            <div id="pagination">
-                <button id="prev-page">
-                    <</button> <span id="page-number">1</span>
-                        <button id="next-page">Next</button>
-            </div>
     </div>
 
+    <div class="page-wrap">
 
-    <script src="script.js"></script>
+        <div class="container-wrap">
+            <section id="leaderboard">
+                <nav class="ladder-nav">
+                    <div class="ladder-title">
+                        <h1 class="clickable">NIT-H Results</h1>
+                    </div>
+                    <div class="ladder-search">
+                        <input type="text" id="search-input" class="live-search-box"
+                            placeholder="Search for Name or Roll Number" />
+                    </div>
+                </nav>
+                <table id="results-table" class="leaderboard-results" width="100%">
+                    <thead>
+                        <tr>
+                            <th>College Rank</th>
+                            <th>Name</th>
+                            <th>Roll</th>
+                            <th>Class Rank</th>
+                            <th>Branch Rank</th>
+                            <th>
+                                <select id="semester-select" class="dropdown">
+                                    <option value="all">Semester</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+
+                            </th>
+                            <th>
+                                <select id="department-select" class="dropdown">
+                                    <option value="all">Branch</option>
+                                    <option value="cse">CSE</option>
+                                    <option value="csed">CSED</option>
+                                    <option value="electrical">EE</option>
+                                    <option value="ece">ECE</option>
+                                    <option value="mechanical">ME</option>
+                                    <option value="civil">CE</option>
+                                    <option value="chemical">CH</option>
+                                    <option value="ece">ECE</option>
+                                    <option value="eced">ECED</option>
+                                    <option value="material">MS</option>
+                                </select>
+                            </th>
+                            <th>CGPI</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-body"></tbody>
+                </table>
+                <div id="pagination">
+                    <button id="prev-page">
+                        <</button> <span id="page-number">1</span>
+                            <button id="next-page">Next</button>
+                </div>
+        </div>
+
+
+        <script src="script.js"></script>
 </body>
 
 
@@ -113,6 +97,6 @@
     <span> | </span>
     <a href="https://linkedin.com/in/abhijeetgupto"> LinkedIn </a>
 </footer>
-
+</div>
 
 </html>

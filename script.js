@@ -1,3 +1,7 @@
+document.querySelector(".page-wrap").style.filter = "blur(5px)";
+document.getElementById("loading-screen").style.display = "block";
+
+
 const API_URL = "https://nith-results-api.deta.dev/students/";
 
 const resultsTable = document.getElementById("results-table");
@@ -34,6 +38,8 @@ request.onreadystatechange = function () {
 };
 request.open("GET", API_URL, true);
 request.send();
+
+
 
 departmentSelect.addEventListener('change', () => {
     selectedDepartment = departmentSelect.value;
@@ -118,6 +124,10 @@ function renderTable() {
     pageNumber.textContent = currentPage;
     prevPageButton.disabled = currentPage === 1;
     nextPageButton.disabled = currentPage === totalPages;
+    document.getElementById("loading-screen").style.display = "none";
+    const loadingBox = document.querySelector(".loading-box");
+    loadingBox.parentNode.removeChild(loadingBox);
+    document.querySelector(".page-wrap").style.filter = "none";
 }
 
 function redirectToStudentPage(event, roll) {
