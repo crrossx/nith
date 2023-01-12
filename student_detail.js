@@ -106,6 +106,9 @@ async function showData() {
     loadingBox.parentNode.removeChild(loadingBox);
     document.querySelector(".page-wrap").style.filter = "none";
 
+
+
+    // FOR STUDENT INFO
     studentCard.innerHTML += `
         <div class="card-inner1">
         <h1>${data.name}</h1> 
@@ -119,40 +122,11 @@ async function showData() {
         </div>
         `;
 
-    data.results.forEach((result) => {
-        // Create a container element for the current semester
-        const semResult = document.createElement('div');
-        semResult.classList.add('container2');
 
-        // Create a table for the current semester
-        const table = document.createElement('table');
-        table.classList.add('result-table');
-        table.innerHTML = `
-              <tr>
-                <th>SNo.</th>
-                <th>Subject</th>
-                <th>Grade</th>
-              </tr>
-            `;
 
-        // Add rows to the table for each subject in the current semester
-        result.subjects.forEach((subject, index) => {
-            table.innerHTML += `
-                <tr>
-                  <td>${index + 1}</td>
-                  <td>${subject.name}</td>
-                  <td>${subject.grade}</td>
-                </tr>
-              `;
-        });
 
-        // Append the table to the container element
-        semResult.appendChild(table);
 
-        // Append the container element to the result element
-        resultCon.appendChild(semResult);
-    });
-
+    // FOR GRAPHS
     // Extract the labels and data from the response object
     const labels = data.results.map((result) => result.sem_no);
     const sgpaData = data.results.map((result) => {
@@ -174,6 +148,147 @@ async function showData() {
     chart2.data.labels = labels;
     chart2.data.datasets[0].data = cgpaData;
     chart2.update();
+
+    // FOR SEM RESULT INFO
+    // Select the container element for the buttons
+    const buttonDiv = document.querySelector('#button-div');
+    const resultCon = document.querySelector('.resultCon');
+
+    data.results.forEach((result, semesterIndex) => {
+        // Adding the button element to the button container
+        const semButton = document.createElement('button');
+        semButton.innerHTML = `Semester ${semesterIndex + 1}`;
+        semButton.setAttribute('data-semester', semesterIndex);
+        semButton.addEventListener('click', () => {
+            // Making the clicked button active
+            document.querySelectorAll('.semester-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            semButton.classList.add('active');
+            const clickedSemesterIndex = semButton.getAttribute('data-semester');
+            // Hiding all other result containers
+            document.querySelectorAll('.semester-result').forEach(container => {
+                container.classList.add('hidden');
+            });
+            // Showing the result container corresponding to the clicked button
+            const semResultContainer = document.querySelector(`.semester-result[data-semester="${clickedSemesterIndex}"]`);
+            semResultContainer.classList.remove('hidden');
+        });
+        semButton.classList.add('semester-button');
+        buttonDiv.appendChild(semButton);
+    });
+
+    data.results.forEach((result, semesterIndex) => {
+        const semResult = document.createElement('div');
+        semResult.setAttribute('data-semester', semesterIndex);
+        semResult.classList.add('semester-result');
+        // semResult.style.display = 'block'; // adding display:block to make the div visible 
+        // Creating the table element to display the result
+        const table = document.createElement('table');
+        table.classList.add('result-table');
+        table.innerHTML = `
+        <tr>
+            <th>SNo.</th>
+            <th>Subject</th>
+            <th>Grade</th>
+        </tr>
+    `;
+
+        result.subjects.forEach((subject, subjectIndex) => {
+            table.innerHTML += `
+            <tr>
+                <td>${subjectIndex + 1}</td>
+                <td>${subject.name}</td>
+                <td>${subject.grade}</td>
+            </tr>
+        `;
+        });
+
+        // Creating the element to display the SGPA, CGPA, etc.
+        const credits = document.createElement('div');
+        credits.classList.add('semester-results');
+        credits.innerHTML = `
+        <p>SGPA: ${result.sgpi}</p>
+        <p>CGPA: ${result.cgpi}</p>
+        <p>Semester Credits: ${result.sgpi_total}</p>
+        <p>Total Credits: ${result.cgpi_total} </p>
+    `;
+
+        // Adding the table and credits element to the semResult container
+        semResult.appendChild(table);
+        semResult.appendChild(credits);
+        resultCon.appendChild(semResult);
+    });
+
+    // Making the first button active by default when the page initially loads
+    document.querySelector('.semester-button:first-child').classList.add('active');
+
+    // Hide all the container elements that contain the results of the semesters, except for the first one
+    const semesterResults = document.querySelectorAll('.semester-result');
+    semesterResults.forEach((container, index) => {
+        if (index !== 0) {
+            container.classList.add('hidden');
+        }
+    });
 }
+
+
+
+
+
+//     //delete from here
+//     // Create a container element for each semester
+//     data.results.forEach((result, semesterIndex) => {
+//         // Create a container element for the current semester
+//         const semResult = document.createElement('div');
+//         semResult.setAttribute('data-semester', semesterIndex);
+//         semResult.classList.add('semester-result');
+//         // Create a table for the current semester
+//         const table = document.createElement('table');
+//         table.classList.add('result-table');
+//         table.innerHTML = `
+//             <tr>
+//               <th>SNo.</th>
+//               <th>Subject</th>
+//               <th>Grade</th>
+//             </tr>
+//           `;
+//         // Add rows to the table for each subject in the current semester
+//         result.subjects.forEach((subject, subjectIndex) => {
+//             table.innerHTML += `
+//             <tr>
+//             <td>${subjectIndex + 1}</td>
+//             <td>${subject.name}</td>
+//             <td>${subject.grade}</td>
+//           </tr>
+//         `;
+//         });
+
+
+//         const credits = document.createElement('div');
+//         credits.classList.add('semester-results');
+//         credits.innerHTML = `
+//             <p>SGPA  ${result.cgpi}</p>
+//             <p>CGPA  ${result.cgpi}</p>
+//             <p>Semester Credits = ${result.sgpi_total}</p>
+//             <p>Total Credits = ${result.cgpi_total} </p>
+//         `;
+
+//         // Append the table to the container element
+//         semResult.appendChild(table);
+//         semResult.appendChild(credits);
+//         // Append the container element to the result container
+//         resultCon.appendChild(semResult);
+
+
+//     });
+
+//     // Make the first button active by default when the page initially loads
+//     document.querySelector('.semester-button:first-child').classList.add('active');
+//     // Hide all the container elements that contain the results of the semesters, except the first one
+//     document.querySelectorAll('.semester-result:not(:first-child)').forEach(container => {
+//         container.style.display = 'none';
+//     });
+// }
 
 showData();
