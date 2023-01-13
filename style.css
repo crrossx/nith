@@ -282,6 +282,7 @@ footer a:hover {
 
 .graphs {
     text-align: center;
+    margin: 25px;
 }
 
 
@@ -357,7 +358,7 @@ footer a:hover {
     text-align: center;
     width: 80%;
     max-width: 800px;
-    margin: 50px auto;
+    margin: 60px auto;
 }
 
 .resultCon {
@@ -397,11 +398,11 @@ footer a:hover {
 }
 
 .semester-result table {
-    margin: auto;
+    margin: 30px;
 }
 
 .semester-result .semester-results {
-    margin: 10px auto;
+    margin: 30px;
 }
 
 .semester-result .semester-results p {
@@ -415,7 +416,7 @@ footer a:hover {
 }
 
 .semester-button {
-    margin: 5px;
+    margin: 6px;
 }
 
 .semester-button.active {
