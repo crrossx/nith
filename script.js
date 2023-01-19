@@ -59,6 +59,7 @@ semesterSelect.addEventListener('change', () => {
     filterResults();
 });
 
+
 prevPageButton.addEventListener("click", () => {
     if (currentPage > 1) {
         currentPage--;
@@ -102,6 +103,8 @@ function filterResults() {
     renderTable();
 }
 
+
+
 function renderTable() {
     resultsBody.innerHTML = "";
     const startIndex = (currentPage - 1) * resultsPerPage;
@@ -109,14 +112,13 @@ function renderTable() {
     const pageResults = filteredResults.slice(startIndex, endIndex);
     pageResults.forEach(result => {
         resultsBody.innerHTML += `
-      <tr>
+      <tr onclick="location.href='student.html?roll=${result.roll}';" style="cursor: pointer;">
         <td>${result.rank}</td>
-        <td><a href="student.html?roll=${result.roll}" style="color: inherit; text-decoration: none" onclick="redirectToStudentPage(event, '${result.roll}')">${result.name}</a></td>
+        <td>${result.name}</td>
         <td>${result.roll}</td>
         <td>${result.batch_rank}</td>
-        <td>${result.branch_rank}</td>
         <td>${result.semester}</td>
-        <td>${result.department}</td>
+        <td style="font-weight: normal">${result.department.toUpperCase()}</td>
         <td>${result.cgpi}</td>
       </tr>
     `;

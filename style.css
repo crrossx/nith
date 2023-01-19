@@ -320,23 +320,14 @@ footer a:hover {
     background: #5055CB;
 }
 
-.container2 {
-    display: inline-block;
-    width: auto;
-    margin: 10px;
-    padding: 5px 5px;
-    border-radius: 8px;
-    box-shadow: inset 5px 5px 10px #0e0e0e, inset -5px -5px 10px #363636;
-}
 
 .student-detail {
-    margin: 10px;
+    display: grid;
+    grid-gap: 4px;
+    margin: 20px;
+    padding: 30px;
+    text-align: center;
     color: white;
-    padding: 30px 30px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    box-shadow: inset 5px 5px 10px #0e0e0e, inset -5px -5px 10px #363636;
 }
 
 .card-inner1 {
@@ -416,10 +407,32 @@ footer a:hover {
 }
 
 .semester-button {
-    margin: 6px;
+    --hover-shadows: 13px 13px 10px #121212,
+        -5px -5px 7px #303030;
+    --accent: #5C8DF6;
+    letter-spacing: 0.05em;
+    border: none;
+    border-radius: 1.1em;
+    background-color: #212121;
+    color: white;
+    padding: 7px 14px;
+    font-size: 88%;
+    margin: 4px;
+    transition: box-shadow ease-in-out 0.3s,
+        background-color ease-in-out 0.1s,
+        letter-spacing ease-in-out 0.1s,
+        transform ease-in-out 0.1s;
+    box-shadow: 13px 13px 10px #1c1c1c,
+        -5px -5px 7px #262626;
+}
+
+.semester-button:hover {
+    box-shadow: var(--hover-shadows);
 }
 
 .semester-button.active {
-    background-color: #5C8DF6;
-    color: white;
+    box-shadow: var(--hover-shadows),
+        var(--accent) 0px 0px 6px 2px;
+    background-color: var(--accent);
+    transform: scale(0.85);
 }
